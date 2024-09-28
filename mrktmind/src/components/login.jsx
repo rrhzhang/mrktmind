@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      navigate('/final-board'); // Redirect to final-board after successful login
+      navigate('/home-page'); // Redirect to final-board after successful login
     } catch (error) {
       setError('Login failed: ' + error.message);
     }

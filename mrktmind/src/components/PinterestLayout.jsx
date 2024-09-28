@@ -8,21 +8,21 @@ const preloadedPins = [
     id: 1,
     title: "Sunset",
     description: "Beautiful sunset over the hills",
-    imageUrl: "./images/test.png",
+    imageUrl: "./images/test.jpeg",
     size: "small"
   },
   {
     id: 2,
     title: "Ocean View",
     description: "Clear blue ocean waves",
-    imageUrl: "./images/test.png",
+    imageUrl: "./images/test.jpeg",
     size: "medium"
   },
   {
     id: 3,
     title: "Mountain",
     description: "Snowy mountain peaks",
-    imageUrl: "./images/test.png",
+    imageUrl: "./images/test.jpeg",
     size: "large"
   },
 ];
