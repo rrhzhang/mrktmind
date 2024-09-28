@@ -22,9 +22,16 @@ const SellItemModal = ({ onClose, onSubmit }) => {
 
   return (
     <div className="modal-overlay">
+      <div className="page-header">
+        <h2>Sell an Item</h2>
+        <div className="action-buttons">
+          <button onClick={() => { /* Add functionality for sell button */ }}>Sell</button>
+          <button onClick={onClose}>Logout</button>
+        </div>
+      </div>
+
       <div className="modal-content">
         <button className="close-button" onClick={onClose}>X</button>
-        <h2>Sell an Item</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
