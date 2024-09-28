@@ -15,7 +15,7 @@ function App() {
         <Route path="/final-board" element={<FinalBoard />} />
         
         {/* Example of another route if you want PinterestLayout to be separate */}
-        <Route path="/home-page" element={<PinterestLayout />} />
+        <Route path="/home-page" element={<div> This is the home page! <PinterestLayout /> </div>} />
 
         {/* Add a fallback route */}
         <Route path="*" element={<div>404 Not Found</div>} />
