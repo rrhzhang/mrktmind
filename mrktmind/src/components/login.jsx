@@ -32,7 +32,7 @@ function Login() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/final-board'); // Redirect to final-board after account creation
+      navigate('/home-page'); // Redirect to final-board after account creation
     } catch (error) {
       setError('Account creation failed: ' + error.message);
     }
@@ -43,7 +43,7 @@ function Login() {
     setError(null);
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      navigate('/final-board'); // Redirect to final-board after successful login
+      navigate('/home-page'); // Redirect to final-board after successful login
     } catch (error) {
       setError('Google Sign-In failed: ' + error.message);
     }
