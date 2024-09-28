@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase'; // Import the auth object from firebase.js
-import './style.css'; // Import the CSS file
+import './styles/style.css'; // Import the CSS file
 import Pin from './components/Pin.jsx'
 import Modal from './components/Modal.jsx'
 import PinterestLayout from './components/PinterestLayout'; // Import the layout component
