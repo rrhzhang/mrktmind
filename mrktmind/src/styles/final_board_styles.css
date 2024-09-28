@@ -9,8 +9,8 @@
     width: 60px;
     height: 60px;
     position: relative;
-    top: 10%;
-    left: 90%;
+    top: 30%;
+    left: 82%;
     transition-duration: 0.3s;
   }
   
@@ -25,7 +25,7 @@
     width: 80vw;
     display: grid;
     grid-template-columns: repeat(auto-fill, 250px);
-    grid-auto-rows: 10px;
+    grid-auto-rows: auto;
     justify-content: center;
   }
   

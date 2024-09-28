@@ -20,7 +20,7 @@ function Login() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
-      navigate('/final-board'); // Navigate to FinalBoard after successful login
+      navigate('/home-page'); 
     } catch (error) {
       setError('Login failed: ' + error.message);
     }
@@ -33,7 +33,7 @@ function Login() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
-      navigate('/final-board'); // Navigate to FinalBoard after account creation
+      navigate('/home-page'); 
     } catch (error) {
       setError('Account creation failed: ' + error.message);
     }

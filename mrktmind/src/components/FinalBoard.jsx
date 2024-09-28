@@ -1,60 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Pin from './Pin';
+import Modal from './Modal';
+import "../styles/final_board_styles.css"
 
-import '../styles/final_board_styles.css';
-import Pin from './Pin.jsx';
-import Modal from './Modal.jsx';
+function FinalBoard() {
+    const [pins, setPins] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
-class FinalBoard extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            pins: [],
-            show_modal: false
+    // Load pins when the component mounts
+    useEffect(() => {
+        const loadedPins = localStorage.getItem('pins');
+        if (loadedPins) {
+            setPins(JSON.parse(loadedPins));
         }
-    }
+    }, []);
 
-    add_pin = pinDetails => {
-        this.setState(_state => {
-            const new_pins = [
-                ..._state.pins
-            ]
+    // Save pins to local storage on change
+    useEffect(() => {
+        localStorage.setItem('pins', JSON.stringify(pins));
+    }, [pins]);
 
-            new_pins.push(
-                <Pin pinDetails={pinDetails} key={_state.pins.length} />
-            )
+    const addPin = pinDetails => {
+        const newPins = [...pins, pinDetails];
+        setPins(newPins);
+        setShowModal(false);
+    };
 
-            return {
-                pins: new_pins,
-                show_modal: false
-            }
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="navigation_bar">
-                    <div onClick={() => this.setState({ show_modal: true })} className="pint_mock_icon_container add_pin">
-                        <img src="./images/add.png" alt="add_pin" className="pint_mock_icon" />
-                    </div>
+    return (
+        <div>
+            <div className="navigation_bar">
+                <div onClick={() => setShowModal(true)} className="pint_mock_icon_container add_pin">
+                    <img src="./images/add.png" alt="add_pin" className="pint_mock_icon" />
                 </div>
-
-                <div className="pin_container">
-                    {this.state.pins}
-                </div>
-
-                <div onClick={event => event.target.className === 'add_pin_modal' ? this.setState({ show_modal: false }) : null}
-                    className="add_pin_modal_container"
-                >
-                    {
-                        this.state.show_modal ?
-                            <Modal add_pin={this.add_pin} /> : null
-                    }
-                </div>
-            </div >
-        )
-    }
+            </div>
+    
+            <div className="pin_container">
+                {pins.map((pin, index) => (
+                    <Pin key={index} pinDetails={pin} />
+                ))}
+            </div>
+    
+            <div onClick={event => event.target.className.includes('add_pin_modal') ? setShowModal(false) : null}
+                 className="add_pin_modal_container"
+            >
+                {showModal && <Modal addPin={addPin} />}
+            </div>
+        </div>
+    );    
 }
 
 export default FinalBoard;

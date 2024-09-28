@@ -1,8 +1,8 @@
 import React from 'react';
 
 import '../styles/modal_and_pin_styles.css';
-import Pin from './Pin.js';
-import Modal from './Modal.js';
+import Pin from './Pin.jsx';
+import Modal from './Modal.jsx';
 
 class ModalAndPin extends React.Component {
     constructor(props) {
