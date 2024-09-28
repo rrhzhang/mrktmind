@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
-import '../styles/login.css'; // Make sure you have this CSS file set up
+import '../styles/login.css';
 import googleIcon from '../assets/imgs/google.png'; // Import the Google image
 
 function Login() {
@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [isCreatingAccount, setIsCreatingAccount] = useState(false); // Controls whether login or account creation is shown
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigate hook
 
   // Handle user login
   const handleLogin = async (e) => {
@@ -19,7 +19,7 @@ function Login() {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      navigate('/home-page'); // Redirect to final-board after successful login
+      navigate('/final-board'); // Navigate to FinalBoard after successful login
     } catch (error) {
       setError('Login failed: ' + error.message);
     }
@@ -32,7 +32,7 @@ function Login() {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/home-page'); // Redirect to final-board after account creation
+      navigate('/final-board'); // Navigate to FinalBoard after account creation
     } catch (error) {
       setError('Account creation failed: ' + error.message);
     }
@@ -43,7 +43,7 @@ function Login() {
     setError(null);
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      navigate('/home-page'); // Redirect to final-board after successful login
+      navigate('/final-board'); // Navigate to FinalBoard after successful Google login
     } catch (error) {
       setError('Google Sign-In failed: ' + error.message);
     }
