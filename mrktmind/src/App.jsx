@@ -1,41 +1,27 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import PinterestLayout from './components/PinterestLayout'; 
-import LoginPage from './components/login';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/login'; // Make sure this path is correct
+import FinalBoard from './components/FinalBoard'; // Make sure this path is correct
+import PinterestLayout from './components/PinterestLayout'; // If this is a separate route
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  return (
+    <div>
+      <Routes>
+        {/* Default route for login */}
+        <Route path="/" element={<Login />} />
+        
+        {/* Route for final board after login */}
+        <Route path="/final-board" element={<FinalBoard />} />
+        
+        {/* Example of another route if you want PinterestLayout to be separate */}
+        <Route path="/pinterest-layout" element={<PinterestLayout />} />
 
-    const handleLogin = () => {
-        setIsAuthenticated(true);
-    };
-
-    return (
-        <Router>
-            <div>
-                {/* Route to login if not authenticated, else redirect to Pinterest Board */}
-                <Switch>
-                    <Route exact path="/">
-                        {isAuthenticated ? <Redirect to="/board" /> : <LoginPage onLogin={handleLogin} />}
-                    </Route>
-
-                    {/* Pinterest board route with the search bar */}
-                    <Route path="/board">
-                        {isAuthenticated ? (
-                            <div>
-                                <SearchBar />
-                                <PinterestLayout />
-                            </div>
-                        ) : (
-                            <Redirect to="/" />
-                        )}
-                    </Route>
-
-                    {/* Add other routes here if needed */}
-                </Switch>
-            </div>
-        </Router>
-    );
+        {/* Add a fallback route */}
+        <Route path="*" element={<div>404 Not Found</div>} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
