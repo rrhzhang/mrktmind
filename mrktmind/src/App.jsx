@@ -4,6 +4,8 @@ import { auth } from './firebase'; // Import the auth object from firebase.js
 import './styles/style.css'; // Import the CSS file
 import Pin from './components/Pin.jsx'
 import Modal from './components/Modal.jsx'
+import './styles/normalize.css';
+import FinalBoard from './components/FinalBoard.jsx';
 import PinterestLayout from './components/PinterestLayout'; // Import the layout component
 
 function App() {
@@ -30,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <Modal />
+      <FinalBoard />
       {user ? (
         <div>
           <div className="welcome-message">
