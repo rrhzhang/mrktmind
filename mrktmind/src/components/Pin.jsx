@@ -3,7 +3,7 @@ import React from "react";
 function Pin(props) {
     return (
         <div style={{
-            ...styles.pin
+            ...styles.pin,
             ...styles[props.size]
         }}>
 

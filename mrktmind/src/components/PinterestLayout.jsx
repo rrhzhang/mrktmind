@@ -3,7 +3,7 @@ import Pin from "./Pin";
 
 function PinterestLayout() {
     return (
-        <div style={StyleSheet.pin_container}>
+        <div style={styles.pin_container}>
             <Pin size = 'small' />
             <Pin size = 'medium' />
             <Pin size = 'small' />
