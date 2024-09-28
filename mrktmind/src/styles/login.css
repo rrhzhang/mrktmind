@@ -1,0 +1,157 @@
+/* General Page Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for the form */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px; /* More rounded corners */
+    margin: 80px auto; /* Add margin to center the form more */
+}
+
+/* Headings */
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Reduce gap for tighter layout */
+    width: 100%;
+}
+
+input, button {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ffffff;  /* Lighter input and button */
+    color: #333;
+}
+
+input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    transition: border-color 0.3s ease-in-out;
+    max-width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Add a soft inner shadow */
+}
+
+input:focus {
+    border-color: #6366f1;
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    background-color: #6366f1;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    max-width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for a button lift */
+}
+
+button:hover {
+    background-color: #4f46e5;
+    transform: translateY(-1px); /* Add a small lift effect on hover */
+}
+
+button:disabled {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
+}
+
+/* Google Sign-In Button */
+.google-signin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    max-width: 300px; /* Larger button width */
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Softer shadow */
+}
+
+.google-signin-btn:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a stronger shadow on hover */
+}
+
+.google-signin-btn img {
+    width: 20px; /* Reduced the size of the Google logo */
+}
+
+/* Link Styling */
+a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #4f46e5;
+}
+
+p {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    margin-top: 24px;
+}
+
+/* OR Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #e5e7eb;
+}
+
+/* Header Link Area */
+nav {
+    margin-bottom: 40px;  /* Added more space between the nav and form */
+    text-align: center;
+}
