@@ -1,17 +1,7 @@
 import React from 'react';
-import './ItemDetailsModal.css'; // Create custom CSS for styling
+import './ItemDetailsModal.css'; // Add appropriate CSS
 
-const ItemDetailsModal = ({ item, onClose }) => {
-  const handleBuy = () => {
-    alert(`Buying ${item.title} from ${item.seller}!`);
-    onClose(); // Close modal after purchase action
-  };
-
-  const handleSell = () => {
-    alert(`Selling ${item.title}!`);
-    onClose(); // Close modal after sell action
-  };
-
+const ItemDetailsModal = ({ item, onClose, onBuy }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -22,8 +12,7 @@ const ItemDetailsModal = ({ item, onClose }) => {
         <p><strong>Price:</strong> {item.price}</p>
         <p><strong>Seller:</strong> {item.seller}</p>
         <div className="modal-actions">
-          <button className="buy-button" onClick={handleBuy}>Buy Now</button>
-          <button className="sell-button" onClick={handleSell}>Sell</button>
+          <button className="buy-button" onClick={() => onBuy(item)}>Buy Now</button>
         </div>
       </div>
     </div>

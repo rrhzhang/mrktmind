@@ -1,11 +1,49 @@
 .final-board {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 20px;
-  }
-  
+  padding: 20px;
+  text-align: center;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logout-button {
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.logout-button, .sell-button {
+  background-color: #ff5a5f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.logout-button:hover, .sell-button:hover {
+  background-color: #e04e4e;
+}
