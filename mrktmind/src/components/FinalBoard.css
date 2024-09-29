@@ -42,8 +42,9 @@ html, body {
   margin-right: 20px;
 }
 
+/* Updated button styles */
 .logout-button, .sell-button {
-  background-color: #ff5a5f;
+  background: linear-gradient(to right, #FF4B2B, #FF416C); /* Gradient background */
   color: white;
   border: none;
   padding: 15px 25px;
@@ -52,21 +53,22 @@ html, body {
   cursor: pointer;
   border-radius: 25px; /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover transition */
 }
 
 /* Hover effect */
 .logout-button:hover, .sell-button:hover {
-  background-color: #e04e4e;
+  background: linear-gradient(to right, #ff6b3a, #ff5b7a); /* Slightly different hover gradient */
   transform: translateY(-3px); /* Slight lift on hover */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
 }
 
-/* Focus state (when clicked) */
+/* Focus state */
 .logout-button:focus, .sell-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.4); /* Highlight on focus */
 }
+
 
 
 /* Grid container styling */

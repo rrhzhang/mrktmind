@@ -1,51 +1,51 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; // import usenavigate
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
 import '../styles/login.css';
-import googleIcon from '../assets/imgs/google.png'; // Import the Google image
+import googleIcon from '../assets/imgs/google.png'; // import the google image
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const [isCreatingAccount, setIsCreatingAccount] = useState(false); // Controls whether login or account creation is shown
-  const navigate = useNavigate(); // Initialize navigate hook
+  const [isCreatingAccount, setIsCreatingAccount] = useState(false); // controls whether login or account creation is shown
+  const navigate = useNavigate(); // initialize navigate hook
 
-  // Handle user login
+  // handle user login
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      navigate('/final-board'); // Navigate to FinalBoard after successful login
+      navigate('/final-board'); // navigate to final-board after successful login
     } catch (error) {
-      setError('Login failed: ' + error.message);
+      setError('login failed: ' + error.message);
     }
   };
 
-  // Handle new account creation
+  // handle new account creation
   const handleCreateAccount = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/final-board'); // Navigate to FinalBoard after account creation
+      navigate('/final-board'); // navigate to final-board after account creation
     } catch (error) {
-      setError('Account creation failed: ' + error.message);
+      setError('account creation failed: ' + error.message);
     }
   };
 
-  // Handle Google sign-in
+  // handle google sign-in
   const handleGoogleLogin = async () => {
     setError(null);
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      navigate('/final-board'); // Navigate to FinalBoard after successful Google login
+      navigate('/final-board'); // navigate to final-board after successful google login
     } catch (error) {
-      setError('Google Sign-In failed: ' + error.message);
+      setError('google sign-in failed: ' + error.message);
     }
   };
 
@@ -53,55 +53,55 @@ function Login() {
     <div className={`container ${isCreatingAccount ? 'right-panel-active' : ''}`} id="container">
       <div className="form-container sign-up-container">
         <form onSubmit={handleCreateAccount}>
-          <h1>Create Account</h1>
+          <h1>create account</h1>
           <div className="social-container" onClick={handleGoogleLogin}>
             <img
               src={googleIcon}
-              alt="Sign in with Google"
+              alt="sign in with google"
               className="google-button"
             />
-            <span>or sign up through Google</span>
+            <span>or sign up through google</span>
           </div>
           <input
             type="text"
-            placeholder="Email"
+            placeholder="email"
             value={email} onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="password"
             value={password} onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit">Sign Up</button>
+          <button type="submit">sign up</button>
         </form>
       </div>
       <div className="form-container sign-in-container">
         <form onSubmit={handleLogin}>
-          <h1>Sign in</h1>
+          <h1>sign in</h1>
           <div className="social-container" onClick={handleGoogleLogin}>
             <img
               src={googleIcon}
-              alt="Sign in with Google"
+              alt="sign in with google"
               className="google-button"
             />
-            <span>or sign in through Google</span>
+            <span>or sign in through google</span>
           </div>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="email"
             value={email} onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="password"
             value={password} onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <a href="#">Forgot your password?</a>
-          <button type="submit">Sign In</button>
+          <a href="#">forgot your password?</a>
+          <button type="submit">sign in</button>
         </form>
       </div>
       <div className="overlay-container">
@@ -109,12 +109,12 @@ function Login() {
           <div className="overlay-panel overlay-left">
             <h1>mrktmind</h1>
             <p>a smart market, tailored for you</p>
-            <button className="ghost" id="signIn" onClick={() => setIsCreatingAccount(false)}>Sign In</button>
+            <button className="ghost" id="signIn" onClick={() => setIsCreatingAccount(false)}>sign in</button>
           </div>
           <div className="overlay-panel overlay-right">
             <h1>mrktmind</h1>
             <p>a smart market, tailored for you</p>
-            <button className="ghost" id="signUp" onClick={() => setIsCreatingAccount(true)}>Sign Up</button>
+            <button className="ghost" id="signUp" onClick={() => setIsCreatingAccount(true)}>sign up</button>
           </div>
         </div>
       </div>
