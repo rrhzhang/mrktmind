@@ -12,7 +12,7 @@ const FinalBoard = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showSellModal, setShowSellModal] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(''); // State for search
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,6 +55,11 @@ const FinalBoard = () => {
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const handleSearch = () => {
+    console.log("Search initiated for:", searchQuery);
+    // Optionally, you can trigger search-specific actions here.
+  };
+
   return (
     <div className="final-board">
       <header className="board-header">
@@ -66,6 +71,7 @@ const FinalBoard = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
+          <button className="search-button" onClick={handleSearch}>Search</button>
         </div>
         <div className="header-buttons">
           <button className="sell-button" onClick={() => setShowSellModal(true)}>sell</button>

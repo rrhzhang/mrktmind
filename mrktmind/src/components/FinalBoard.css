@@ -11,7 +11,6 @@ html, body {
   text-align: center;
 }
 
-/* Header styling */
 .board-header {
   display: flex;
   justify-content: space-between;
@@ -33,12 +32,12 @@ html, body {
   margin-left: 20px;
 }
 
-/* Search bar styling */
 .search-bar {
+  display: flex;
+  gap: 10px; /* Add space between input and button */
+  align-items: center;
   flex-grow: 1;
   margin-left: 20px;
-  display: flex;
-  justify-content: center;
 }
 
 .search-bar input {
@@ -52,7 +51,24 @@ html, body {
   outline: none;
 }
 
-/* Header buttons */
+.search-button {
+  padding: 8px; /* Reduced padding for a smaller button */
+  background-color: #FF4B2B;
+  color: white;
+  border: none;
+  border-radius: 20px; /* Reduced border radius */
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9em; /* Smaller font size */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 80px;
+}
+
+.search-button:hover {
+  background-color: #FF416C;
+  transform: translateY(-1px); /* Slightly reduced hover effect */
+}
+
 .header-buttons {
   display: flex;
   gap: 10px;
@@ -83,7 +99,6 @@ html, body {
   box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.4);
 }
 
-/* Grid container */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
