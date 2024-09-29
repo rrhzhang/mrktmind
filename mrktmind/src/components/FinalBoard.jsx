@@ -5,13 +5,14 @@ import { auth } from '../firebase';
 import ItemCard from './ItemCard';
 import ItemDetailsModal from './ItemDetailsModal';
 import SellItemModal from './SellItemModal';
-import './FinalBoard.css';
 import TableauEmbed from './TableauEmbed';
+import './FinalBoard.css';
 
 const FinalBoard = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showSellModal, setShowSellModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); // State for search
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,13 +33,13 @@ const FinalBoard = () => {
 
   const handleBuyItem = (item) => {
     handleCloseModal();
-    navigate('/checkout'); // Navigate to the checkout page after purchase
+    navigate('/checkout');
   };
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/'); // Redirect to login page
+      navigate('/');
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -49,20 +50,35 @@ const FinalBoard = () => {
     setShowSellModal(false);
   };
 
+  // Filter items based on search query
+  const filteredItems = items.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="final-board">
       <header className="board-header">
         <h1>mrktmind</h1>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search items..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
         <div className="header-buttons">
           <button className="sell-button" onClick={() => setShowSellModal(true)}>sell</button>
           <button className="logout-button" onClick={handleLogout}>logout</button>
         </div>
       </header>
+
       <div className="grid-container">
-        {items.map(item => (
+        {filteredItems.map(item => (
           <ItemCard key={item.id} item={item} onClick={() => handleItemClick(item)} />
         ))}
       </div>
+
       {selectedItem && (
         <ItemDetailsModal
           item={selectedItem}
@@ -70,12 +86,14 @@ const FinalBoard = () => {
           onBuy={handleBuyItem}
         />
       )}
+
       {showSellModal && (
         <SellItemModal
           onClose={() => setShowSellModal(false)}
           onSubmit={handleAddItem}
         />
       )}
+
       <div className="App">
         <TableauEmbed />
       </div>
