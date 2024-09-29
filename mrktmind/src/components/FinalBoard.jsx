@@ -51,7 +51,7 @@ const FinalBoard = () => {
   return (
     <div className="final-board">
       <header className="board-header">
-        <h1>MRKTMind</h1>
+        <h1>mrktmind</h1>
         <div className="header-buttons">
           <button className="sell-button" onClick={() => setShowSellModal(true)}>Sell</button>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
