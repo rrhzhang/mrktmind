@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 /* Global settings */
 html, body {
-  color: black; /* Ensures that the default text color is black */
-  font-family: Arial, sans-serif; /* Optional: Sets a readable font */
+  color: black; 
+  font-family: 'Montserrat', sans-serif; /* Apply Montserrat globally */
+  font-weight: 400; /* Set default font weight */
+}
+
+/* Force font-family for all text elements */
+* {
+  font-family: 'Montserrat', sans-serif; /* Apply Montserrat to all elements */
 }
 
 /* Modal overlay and content styling */
@@ -20,7 +28,7 @@ html, body {
 
 .modal-content {
   background: white;
-  color: black; /* Explicitly setting text color to black */
+  color: black;
   padding: 20px;
   border-radius: 10px;
   max-width: 500px;
@@ -29,18 +37,36 @@ html, body {
   position: relative;
   max-height: 90%;
   overflow-y: auto;
+  font-family: 'Montserrat', sans-serif; /* Force Montserrat for modal content */
 }
 
-/* Close button styling */
+/* Combined button styling */
 .close-button {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 25%;
+  border: 1px solid red;
   position: absolute;
   top: 10px;
   right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
+  background-color: transparent;
+  font-size: 18px;
   cursor: pointer;
-  color: black; 
+  color: #FF4B2B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-right: 11px;
+  font-family: 'Montserrat', sans-serif; /* Ensure Montserrat for close button */
+}
+
+/* Hover effect */
+.close-button:hover {
+  background-color: rgba(255, 75, 43, 0.1);
+  border-color: #FF6B3A;
+  color: #FF6B3A;
 }
 
 /* Form input styling */
@@ -51,7 +77,20 @@ form input, form textarea {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: black; /* Ensures text inside inputs and textareas is black */
+  background-color: #eee;
+  color: black;
+  font-family: 'Montserrat', sans-serif; /* Force Montserrat for inputs */
+}
+
+/* Disable textarea resizing */
+form textarea {
+  resize: none;
+}
+
+/* Optional: Add focus styling for consistency */
+form input:focus, form textarea:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 form button {
@@ -61,6 +100,8 @@ form button {
   padding: 10px 15px;
   cursor: pointer;
   width: 100%;
+  font-family: 'Montserrat', sans-serif; /* Ensure Montserrat for buttons */
+  font-weight: 700; /* Add bold font for buttons */
 }
 
 /* Title and buttons fixed at the top */
@@ -75,12 +116,14 @@ form button {
   align-items: center;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  color: black; 
+  color: black;
+  font-family: 'Montserrat', sans-serif; /* Ensure Montserrat for header */
 }
 
 .page-header h2 {
   margin: 0;
   font-size: 24px;
+  font-family: 'Montserrat', sans-serif; /* Ensure Montserrat for headings */
 }
 
 .page-header .action-buttons {
@@ -95,6 +138,7 @@ form button {
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
+  font-family: 'Montserrat', sans-serif; /* Ensure Montserrat for buttons */
 }
 
 .page-header .action-buttons button:hover {
