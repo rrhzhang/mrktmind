@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Checkout.css'; // Make sure you create and link a Checkout.css file
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = ({ onConfirm }) => {
   const [formData, setFormData] = useState({
@@ -13,11 +14,13 @@ const Checkout = ({ onConfirm }) => {
     cvv: '',
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validateCardNumber = (number) => {
-    const regex = new RegExp("^[0-9]{16}$");
-    return regex.test(number.replace(/\s+/g, '')); // removes spaces and checks if there are 16 digits
-  };
+    const cleanedNumber = number.replace(/\s+/g, ''); // Removes spaces
+    const regex = new RegExp("^[0-9]{13,19}$"); // Adjusted to accept between 13 and 19 digits
+    return regex.test(cleanedNumber);
+  };  
 
   const validateExpiryDate = (date) => {
     const regex = new RegExp("^(0[1-9]|1[0-2])\/?([0-9]{2})$");
@@ -74,27 +77,30 @@ const Checkout = ({ onConfirm }) => {
       return;
     }
 
-    // If no errors, proceed
-    onConfirm(formData);
-    console.log(formData); // For demonstration purposes
+    // If no errors, proceed to confirmation page
+    onConfirm(formData); // Optional: You can perform additional actions here
+    navigate('/confirmation'); // Redirect to confirmation page
   };
 
   return (
     <div className="checkout-container">
+        <div className="image-container">
+            <img src="https://digitalmarketingphilippines.com/wp-content/uploads/2014/11/ecommerce-SEO.jpg" alt="Checkout Image" />
+        </div>
       <form onSubmit={handleSubmit} className="checkout-form">
-        <h2>Checkout</h2>
-        <input type="text" name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
-        <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
-        <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
-        <input type="text" name="state" placeholder="State" value={formData.state} onChange={handleChange} required />
-        <input type="text" name="zip" placeholder="ZIP Code" value={formData.zip} onChange={handleChange} required />
-        <input type="text" name="cardNumber" placeholder="Card Number" value={formData.cardNumber} onChange={handleChange} required />
+        <h2>checkout</h2>
+        <input type="text" name="fullName" placeholder="full name" value={formData.fullName} onChange={handleChange} required />
+        <input type="text" name="address" placeholder="address" value={formData.address} onChange={handleChange} required />
+        <input type="text" name="city" placeholder="city" value={formData.city} onChange={handleChange} required />
+        <input type="text" name="state" placeholder="state" value={formData.state} onChange={handleChange} required />
+        <input type="text" name="zip" placeholder="zip code" value={formData.zip} onChange={handleChange} required />
+        <input type="text" name="cardNumber" placeholder="card number" value={formData.cardNumber} onChange={handleChange} required />
         {errors.cardNumber && <div className="error">{errors.cardNumber}</div>}
-        <input type="text" name="expiryDate" placeholder="Expiry Date (MM/YY)" value={formData.expiryDate} onChange={handleChange} required />
+        <input type="text" name="expiryDate" placeholder="expiry date (MM/YY)" value={formData.expiryDate} onChange={handleChange} required />
         {errors.expiryDate && <div className="error">{errors.expiryDate}</div>}
         <input type="text" name="cvv" placeholder="CVV" value={formData.cvv} onChange={handleChange} required />
         {errors.cvv && <div className="error">{errors.cvv}</div>}
-        <button type="submit">Confirm Purchase</button>
+        <button type="submit">confirm purchase</button>
       </form>
     </div>
   );

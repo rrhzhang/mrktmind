@@ -1,47 +1,36 @@
-/* Main container styling */
 .checkout-container {
-    display: flex; /* Use flexbox to lay out children side by side */
-    justify-content: center; /* Center everything horizontally */
-    align-items: start; /* Align items from the top */
+    display: flex; /* Flexbox to align children side by side */
+    justify-content: center; /* Center children horizontally */
+    align-items: start; /* Align children at the start vertically */
     padding: 20px;
   }
   
-  /* Form styling */
-  .checkout-form {
-    flex: 1; /* Allows the form to grow and fill the space */
-    margin-right: 20px; /* Adds some space between the form and the image */
-  }
-  
-  /* Image container styling */
   .image-container {
-    width: 300px; /* Set a fixed width for the image container */
-    height: 300px; /* Set a fixed height for the image container */
-    background-color: #f3f3f3; /* Light grey background */
-    display: flex; /* Use flexbox inside the image container */
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
-    border: 1px solid #ccc; /* Adds a border around the image container */
+    flex: 0 1 300px; /* Flex shrink and basis set to maintain image width */
+    margin-right: 20px; /* Space between image and form */
   }
   
-  /* Styling for individual form fields */
-  form input,
-  form textarea {
-    display: block;
-    width: 100%; /* Make each input stretch to fill the form width */
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .checkout-form {
+    flex: 1; /* Form takes up the remaining space */
+    max-width: calc(100% - 320px); /* Calculate max-width dynamically */
   }
   
-  form button {
+  .form-inputs {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 15px; /* Space between fields */
+  }
+  
+  button.lowercase {
+    text-transform: lowercase; /* Lowercase styling for button */
+  }
+  
+  /* Apply to all input types including button for consistency */
+  input, textarea, button {
     width: 100%;
-    padding: 10px 0;
-    background-color: #4CAF50; /* Green background for the button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box; /* Include padding and border in the element's width */
   }
   
   /* Error message styling */
