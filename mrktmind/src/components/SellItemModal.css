@@ -40,7 +40,7 @@ html, body {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  color: black; /* Ensures close button 'X' is black */
+  color: black; 
 }
 
 /* Form input styling */
@@ -75,7 +75,7 @@ form button {
   align-items: center;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  color: black; /* Ensures text in the header is black */
+  color: black; 
 }
 
 .page-header h2 {

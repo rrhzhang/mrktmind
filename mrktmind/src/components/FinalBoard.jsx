@@ -1,38 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth'; // Importing signOut function
-import { auth } from '../firebase'; // Import Firebase authentication
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 import ItemCard from './ItemCard';
 import ItemDetailsModal from './ItemDetailsModal';
-import SellItemModal from './SellItemModal'; // Modal for selling items
+import SellItemModal from './SellItemModal';
 import './FinalBoard.css';
-
-// Mock function to simulate fetching available items (replace with real API call or Firebase call)
-const fetchAvailableItems = async () => {
-  return [
-    {
-      id: 1,
-      title: "Vintage Lamp",
-      description: "A beautiful vintage lamp in great condition.",
-      price: "$50",
-      imageUrl: "/assets/imgs/lamp.jpg", // replace with actual image path
-      seller: "John Doe",
-    },
-    {
-      id: 2,
-      title: "Designer Chair",
-      description: "Comfortable and stylish chair, perfect for any room.",
-      price: "$120",
-      imageUrl: "/assets/imgs/chair.jpg", // replace with actual image path
-      seller: "Jane Smith",
-    },
-  ];
-};
 
 const FinalBoard = () => {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [showSellModal, setShowSellModal] = useState(false); // Control visibility of the Sell Modal
+  const [showSellModal, setShowSellModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,31 +22,30 @@ const FinalBoard = () => {
   }, []);
 
   const handleItemClick = (item) => {
-    setSelectedItem(item); // Open item details modal
+    setSelectedItem(item);
   };
 
   const handleCloseModal = () => {
-    setSelectedItem(null); // Close modal
+    setSelectedItem(null);
   };
 
   const handleBuyItem = (item) => {
-    alert(`You have purchased: ${item.title} for ${item.price}`);
-    handleCloseModal(); // Close the modal after purchase
+    handleCloseModal();
+    navigate('/checkout'); // Navigate to the checkout page after purchase
   };
 
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Sign out the user
+      await signOut(auth);
       navigate('/'); // Redirect to login page
     } catch (error) {
       console.error("Logout failed:", error);
     }
   };
 
-  // Handle adding a new product
   const handleAddItem = (newItem) => {
-    setItems((prevItems) => [...prevItems, newItem]); // Add new item to the list
-    setShowSellModal(false); // Close the Sell Modal
+    setItems(prevItems => [...prevItems, newItem]);
+    setShowSellModal(false);
   };
 
   return (
@@ -81,11 +58,10 @@ const FinalBoard = () => {
         </div>
       </header>
       <div className="grid-container">
-        {items.map((item) => (
-          <ItemCard key={item.id} item={item} onClick={handleItemClick} />
+        {items.map(item => (
+          <ItemCard key={item.id} item={item} onClick={() => handleItemClick(item)} />
         ))}
       </div>
-
       {selectedItem && (
         <ItemDetailsModal
           item={selectedItem}
@@ -93,11 +69,10 @@ const FinalBoard = () => {
           onBuy={handleBuyItem}
         />
       )}
-
       {showSellModal && (
         <SellItemModal
           onClose={() => setShowSellModal(false)}
-          onSubmit={handleAddItem} // Function to add new item
+          onSubmit={handleAddItem}
         />
       )}
     </div>
