@@ -6,6 +6,7 @@ import ItemCard from './ItemCard';
 import ItemDetailsModal from './ItemDetailsModal';
 import SellItemModal from './SellItemModal';
 import './FinalBoard.css';
+import TableauEmbed from './TableauEmbed';
 
 const FinalBoard = () => {
   const [items, setItems] = useState([]);
@@ -57,6 +58,10 @@ const FinalBoard = () => {
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </header>
+      <div className="App">
+        <h1>Embedded Tableau Dashboard</h1>
+        <TableauEmbed />
+      </div>
       <div className="grid-container">
         {items.map(item => (
           <ItemCard key={item.id} item={item} onClick={() => handleItemClick(item)} />
