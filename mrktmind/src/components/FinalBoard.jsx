@@ -6,6 +6,7 @@ import ItemCard from './ItemCard';
 import ItemDetailsModal from './ItemDetailsModal';
 import SellItemModal from './SellItemModal';
 import './FinalBoard.css';
+import TableauEmbed from './TableauEmbed';
 
 const FinalBoard = () => {
   const [items, setItems] = useState([]);
@@ -75,6 +76,9 @@ const FinalBoard = () => {
           onSubmit={handleAddItem}
         />
       )}
+      <div className="App">
+        <TableauEmbed />
+      </div>
     </div>
   );
 };

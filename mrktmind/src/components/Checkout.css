@@ -1,43 +1,59 @@
+/* Main container styling */
 .checkout-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Use flexbox to lay out children side by side */
+    justify-content: center; /* Center everything horizontally */
+    align-items: start; /* Align items from the top */
     padding: 20px;
   }
   
+  /* Form styling */
   .checkout-form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
+    flex: 1; /* Allows the form to grow and fill the space */
+    margin-right: 20px; /* Adds some space between the form and the image */
   }
   
-  .checkout-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  /* Image container styling */
+  .image-container {
+    width: 300px; /* Set a fixed width for the image container */
+    height: 300px; /* Set a fixed height for the image container */
+    background-color: #f3f3f3; /* Light grey background */
+    display: flex; /* Use flexbox inside the image container */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    border: 1px solid #ccc; /* Adds a border around the image container */
   }
   
-  .checkout-form input {
-    padding: 10px;
+  /* Styling for individual form fields */
+  form input,
+  form textarea {
+    display: block;
+    width: 100%; /* Make each input stretch to fill the form width */
+    margin-bottom: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .checkout-form button {
-    padding: 10px;
-    background-color: #007bff;
+  form button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4CAF50; /* Green background for the button */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
-  .checkout-form button:hover {
-    background-color: #0056b3;
+  /* Error message styling */
+  .error {
+    color: red; /* Red color for error messages */
+    font-size: 14px; /* Smaller font size for errors */
+    margin-top: -10px; /* Moves the error message closer to the input */
+    margin-bottom: 10px; /* Adds space below the error message */
+  }
+  
+  /* Header styling inside the form */
+  .checkout-form h2 {
+    margin-bottom: 20px; /* Adds space below the header */
   }
   
