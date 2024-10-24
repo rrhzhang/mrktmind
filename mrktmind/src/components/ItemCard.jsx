@@ -1,5 +1,5 @@
 import React from 'react';
-import './ItemCard.css'; // Add custom styling here
+import './ItemCard.css'; 
 
 const ItemCard = ({ item, onClick }) => {
   return (

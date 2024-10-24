@@ -13,10 +13,10 @@ const OrderConfirmation = () => {
         <h2>Thank you for your purchase!</h2>
         <p>Your order has been confirmed and details are below:</p>
         <div>
-          <strong>Order Number:</strong> {orderDetails?.orderNumber}
+          <strong>Order Number: 12345</strong> {orderDetails?.orderNumber}
         </div>
         <div>
-          <strong>Total Amount:</strong> {orderDetails?.totalAmount}
+          <strong>Total Amount: $100</strong> {orderDetails?.totalAmount}
         </div>
         {/* Add more order details as needed */}
       </div>

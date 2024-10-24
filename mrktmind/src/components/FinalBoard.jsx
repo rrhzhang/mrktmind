@@ -52,12 +52,19 @@ const FinalBoard = () => {
 
   // Filter items based on search query
   const filteredItems = items.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description?.toLowerCase().includes(searchQuery.toLowerCase()) 
   );
+
+  // Handle pressing "Enter" in search field
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch(); // Trigger search on Enter
+    }
+  };
 
   const handleSearch = () => {
     console.log("Search initiated for:", searchQuery);
-    // Optionally, you can trigger search-specific actions here.
   };
 
   return (
@@ -70,6 +77,7 @@ const FinalBoard = () => {
             placeholder="Search items..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
           <button className="search-button" onClick={handleSearch}>Search</button>
         </div>
@@ -79,11 +87,22 @@ const FinalBoard = () => {
         </div>
       </header>
 
-      <div className="grid-container">
-        {filteredItems.map(item => (
-          <ItemCard key={item.id} item={item} onClick={() => handleItemClick(item)} />
-        ))}
+      <div className="main-content">
+        <div className="grid-container">
+          {filteredItems.length > 0 ? (
+            filteredItems.map(item => (
+              <ItemCard key={item.id} item={item} onClick={() => handleItemClick(item)} />
+            ))
+          ) : (
+            <p>No items match your search.</p>
+          )}
+        </div>
+
+        <div className="tableau-container">
+          <TableauEmbed />
+        </div>
       </div>
+
 
       {selectedItem && (
         <ItemDetailsModal
@@ -100,9 +119,6 @@ const FinalBoard = () => {
         />
       )}
 
-      <div className="App">
-        <TableauEmbed />
-      </div>
     </div>
   );
 };
