@@ -52,6 +52,27 @@ const FinalBoard = () => {
       description: 'Softening skin care.',
       price: '$25.00',
       imageUrl: 'https://m.media-amazon.com/images/I/4146li-3ZLL._SR480,440_.jpg' 
+    },
+    {
+      id: 7,
+      title: 'Stanley',
+      description: 'A tumbler for your favorite drink.',
+      price: '$45.00',
+      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51-U5dEbEBL._AC_UL675_SR675,480_.jpg' 
+    },
+    {
+      id: 8,
+      title: 'Bedsheets',
+      description: 'Soft and comfortable bedsheets.',
+      price: '$25.00',
+      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61z+CPrjvdL._AC_UL675_SR675,480_.jpg' 
+    },
+    {
+      id: 9,
+      title: 'Airpods pro',
+      description: 'Bluetooth listening device.',
+      price: '$225.00',
+      imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/61SUj2aKoEL._AC_UL675_SR675,480_.jpg' 
     }
   ]);
 
