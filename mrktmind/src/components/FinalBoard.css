@@ -6,7 +6,6 @@ html, body {
 }
 
 .final-board {
-  padding: 160px 40px; /* Add top padding to avoid content overlap with the header */
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
@@ -101,7 +100,6 @@ html, body {
   box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.4);
 }
 
-/* Main content container - Flexbox for grid and Tableau */
 .main-content {
   display: flex;
   justify-content: space-between; /* Ensures space between grid and Tableau */
@@ -112,26 +110,27 @@ html, body {
 /* Grid for the item cards on the left */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns for items */
-  grid-gap: 30px;
-  width: 60%; /* Take 60% of the width for the items grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 20px;
+  width: 70%; /* Adjust width to take more space on the left */
   padding: 20px;
   overflow-y: scroll;
 }
 
 /* Tableau container on the right */
 .tableau-container {
-  width: 30%; /* Take 35% of the width for the Tableau embed */
+  width: 25%; /* Take 25% of the width for the Tableau embed */
   padding: 20px;
 }
 
 .item-card {
   height: 300px;
-  width: 300px;
+  width: 100%; /* Make sure item takes up full grid column width */
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .item-card:hover {
@@ -140,7 +139,7 @@ html, body {
 
 .item-image {
   height: 250px;
-  object-fit: cover;
+  object-fit: fill;
   width: 100%;
 }
 
